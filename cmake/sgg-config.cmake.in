@@ -1,0 +1,15 @@
+@PACKAGE_INIT@
+
+if (NOT TARGET sgg::sgg)
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(GLEW)
+find_dependency(SDL2)
+find_dependency(sdl2-mixer)
+find_dependency(freetype)
+find_dependency(glm)
+
+include(@PACKAGE_CMAKE_INSTALL_DATADIR@/cmake/sgg/sgg-targets.cmake)
+
+endif()
