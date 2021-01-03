@@ -51,5 +51,17 @@ install(DIRECTORY
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
+install(FILES
+    ${PROJECT_SOURCE_DIR}/cmake/FindSDL2.cmake
+    ${PROJECT_SOURCE_DIR}/cmake/FindWrap_Freetype.cmake
+    ${PROJECT_SOURCE_DIR}/cmake/FindWrap_glm.cmake
+    ${PROJECT_SOURCE_DIR}/cmake/FindWrap_SDL2_mixer.cmake
+    ${PROJECT_SOURCE_DIR}/cmake/FindSDL2_mixer.cmake
+    ${PROJECT_SOURCE_DIR}/cmake/FindWrap_GLEW.cmake
+    ${PROJECT_SOURCE_DIR}/cmake/FindWrap_SDL2.cmake
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}
+)
+
+
 include(${PROJECT_SOURCE_DIR}/cmake/AddUninstallTarget.cmake)
 

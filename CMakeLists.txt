@@ -2,13 +2,15 @@ cmake_minimum_required(VERSION 3.15.7)
 
 project(sgg VERSION 1.0.0 LANGUAGES CXX)
 
-find_package(GLEW CONFIG REQUIRED)
-find_package(SDL2 CONFIG REQUIRED)
-find_package(sdl2-mixer CONFIG REQUIRED)
-find_package(freetype CONFIG REQUIRED)
-find_package(glm CONFIG REQUIRED)
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-add_library(sgg
+find_package(Wrap_GLEW MODULE REQUIRED)
+find_package(Wrap_glm MODULE REQUIRED)
+find_package(Wrap_SDL2 MODULE REQUIRED)
+find_package(Wrap_Freetype MODULE REQUIRED) 
+find_package(Wrap_SDL2_mixer MODULE REQUIRED)
+
+add_library(sgg SHARED
     src/audio.cpp
     src/AudioManager.cpp
     src/fonts.cpp
@@ -27,11 +29,11 @@ target_include_directories(sgg
 
 target_link_libraries(sgg
     PUBLIC
-    GLEW::GLEW
-    SDL2::SDL2-static
-    SDL2::SDL2_mixer
-    freetype
-    glm
+    $<TARGET_NAME_IF_EXISTS:glm::glm>
+    $<TARGET_NAME_IF_EXISTS:GLEW::glew>
+    $<TARGET_NAME_IF_EXISTS:SDL2::SDL2>
+    $<TARGET_NAME_IF_EXISTS:Freetype::Freetype>
+    $<TARGET_NAME_IF_EXISTS:SDL2::SDL2_mixer>
 )
 
 include(cmake/Installation.cmake)

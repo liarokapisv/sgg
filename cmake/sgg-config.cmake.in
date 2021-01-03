@@ -2,13 +2,15 @@
 
 if (NOT TARGET sgg::sgg)
 
-include(CMakeFindDependencyMacro)
+list(APPEND CMAKE_MODULE_PATH @PACKAGE_CMAKE_INSTALL_DATADIR@/cmake/sgg)
 
-find_package(GLEW CONFIG REQUIRED)
-find_package(SDL2 CONFIG REQUIRED)
-find_package(sdl2-mixer CONFIG REQUIRED)
-find_package(freetype CONFIG REQUIRED)
-find_package(glm CONFIG REQUIRED)
+find_package(Wrap_GLEW MODULE REQUIRED)
+find_package(Wrap_glm MODULE REQUIRED)
+find_package(Wrap_SDL2 MODULE REQUIRED)
+find_package(Wrap_Freetype MODULE REQUIRED)
+find_package(Wrap_SDL2_mixer MODULE REQUIRED)
+
+list(REMOVE_AT CMAKE_MODULE_PATH -1)
 
 include(@PACKAGE_CMAKE_INSTALL_DATADIR@/cmake/sgg/sgg-targets.cmake)
 
