@@ -8,11 +8,11 @@ set(CMAKE_PREFIX_PATH @CMAKE_PREFIX_PATH@)
 
 include(CMakeFindDependencyMacro)
 
-find_dependency(GLEW)
-find_dependency(SDL2)
-find_dependency(sdl2-mixer)
-find_dependency(freetype)
-find_dependency(glm)
+find_package(GLEW CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(freetype CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
 
 include(@PROJECT_BINARY_DIR@/sgg-targets.cmake)
 

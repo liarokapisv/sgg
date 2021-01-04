@@ -4,11 +4,11 @@ if (NOT TARGET sgg::sgg)
 
 include(CMakeFindDependencyMacro)
 
-find_dependency(GLEW)
-find_dependency(SDL2)
-find_dependency(sdl2-mixer)
-find_dependency(freetype)
-find_dependency(glm)
+find_package(GLEW CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(freetype CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
 
 include(@PACKAGE_CMAKE_INSTALL_DATADIR@/cmake/sgg/sgg-targets.cmake)
 
